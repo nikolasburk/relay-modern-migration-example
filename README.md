@@ -1,6 +1,6 @@
 # react-relay-todo-example
 
-This is the famous [TodoMVC](http://todomvc.com/) implemented in [React](https://facebook.github.io/react) + [Relay](https://facebook.github.io/relay) using [graph.cool](http://graph.cool) (GraphQL backend as a service).
+:memo: [Todo](http://todomvc.com/) example app built with [React](https://facebook.github.io/react) & [Relay](https://facebook.github.io/relay)
 
 ## Getting Started
 
