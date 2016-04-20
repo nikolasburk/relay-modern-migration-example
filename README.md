@@ -36,6 +36,7 @@ Open `package.json` and set the GraphQL schema url to your schema endpoint. Here
 That's all needed in order to run this example. Please run the following command and open [localhost:3000](http://localhost:3000) in your browser.
 
 ```sh
+npm install
 npm start
 ```
 
