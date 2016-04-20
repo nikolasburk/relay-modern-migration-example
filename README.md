@@ -4,6 +4,8 @@
 
 ## Getting Started
 
+After [downloading this example](https://github.com/graphcool-examples/react-relay-todo-example/archive/master.zip) please follow these steps.
+
 ### 1. Create an account
 
 To run this example, please create a [graph.cool](http://graph.cool) account in order to **get your Relay endpoint**. This shouldn't take longer than 30 seconds. We promise!
