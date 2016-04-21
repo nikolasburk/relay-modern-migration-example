@@ -10,7 +10,7 @@ import ViewerQueries from './queries/ViewerQueries';
 import { browserHistory } from 'react-router'
 
 Relay.injectNetworkLayer(
-  new Relay.DefaultNetworkLayer('https://api.graph.cool/graphql/__YOUR_PROJECT_ID__')
+  new Relay.DefaultNetworkLayer('https://api.graph.cool/relay/v1/__YOUR_PROJECT_ID__')
 );
 
 ReactDOM.render(

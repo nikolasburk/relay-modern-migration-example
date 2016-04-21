@@ -3,7 +3,7 @@
   "scripts": {
     "start": "babel-node ./server.js"
   },
-  "react-relay-schema": "https://api.graph.cool/graphql/__YOUR_PROJECT_ID__/schema.json",
+  "react-relay-schema": "https://api.graph.cool/relay/v1/__YOUR_PROJECT_ID__/schema.json",
   "dependencies": {
     "babel-core": "^6.7.6",
     "babel-loader": "6.2.4",
