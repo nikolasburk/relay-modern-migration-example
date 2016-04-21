@@ -10,7 +10,7 @@ After [downloading this example](https://github.com/graphcool-examples/react-rel
 
 To run this example, please create a [graph.cool](http://graph.cool) account in order to **get your Relay endpoint**. This shouldn't take longer than 30 seconds. We promise!
 
-Here is an example endpoint: `https://api.graph.cool/relay/IYJuagVjdDpjaW42MGVrbDkwMDAzcjlpN8NhNzFheWl9 `
+Here is an example endpoint: `https://api.graph.cool/relay/v1/IYJuagVjdDpjaW42MGVrbDkwMDAzcjlpN8NhNzFheWl9 `
 
 
 ### 2. Configure app data endpoint
@@ -19,7 +19,7 @@ Open `js/app.js` and paste your new endpoint to the line containing `new Relay.D
 
 ```js
 Relay.injectNetworkLayer(
-  new Relay.DefaultNetworkLayer('https://api.graph.cool/relay/IYJuagVjdDpjaW42MGVrbDkwMDAzcjlpN8NhNzFheWl9')
+  new Relay.DefaultNetworkLayer('https://api.graph.cool/relay/v1/IYJuagVjdDpjaW42MGVrbDkwMDAzcjlpN8NhNzFheWl9')
 );
 ```
 
@@ -28,7 +28,7 @@ Relay.injectNetworkLayer(
 Open `package.json` and set the GraphQL schema url to your schema endpoint. This is based on [babel-plugin-react-relay](https://github.com/graphcool/babel-plugin-react-relay). Here is how it should look like:
 
 ```json
-"react-relay-schema": "https://api.graph.cool/relay/IYJuagVjdDpjaW42MGVrbDkwMDAzcjlpN8NhNzFheWl9/schema.json"
+"react-relay-schema": "https://api.graph.cool/relay/v1/IYJuagVjdDpjaW42MGVrbDkwMDAzcjlpN8NhNzFheWl9/schema.json"
 ```
 
 ### 4. Run the example
