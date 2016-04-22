@@ -5,6 +5,7 @@ export default class ChangeTodoStatusMutation extends Relay.Mutation {
     todo: () => Relay.QL`
       fragment on Todo {
         id,
+        complete
       }
     `,
     // TODO: Mark completedCount optional

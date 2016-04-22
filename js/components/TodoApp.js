@@ -1,3 +1,4 @@
+import ChangeTodoStatusMutation from '../mutations/ChangeTodoStatusMutation';
 import AddTodoMutation from '../mutations/AddTodoMutation';
 import TodoListFooter from './TodoListFooter';
 import TodoTextInput from './TodoTextInput';
@@ -8,11 +9,31 @@ import Relay from 'react-relay';
 class TodoApp extends React.Component {
   _handleTextInputSave = (text) => {
     Relay.Store.commitUpdate(
-      new AddTodoMutation({text, viewer: this.props.viewer})
+      new AddTodoMutation({text, viewer: this.props.viewer});
     );
   };
+  _handleMarkAll() {
+    const numRemainingTodos = this.props.viewer.allTodos.edges.filter(x => !x.node.complete).length;
+    const newStatus = numRemainingTodos === 0 ? false : true;
+
+    console.log('newStatus', newStatus)
+
+    this.props.viewer.allTodos.edges
+    .map(x => x.node)
+    .filter(x => x.complete !== newStatus)
+    .forEach((todo) =>{
+      Relay.Store.commitUpdate(
+        new ChangeTodoStatusMutation({
+          complete: newStatus,
+          todo: todo,
+          viewer: this.props.viewer,
+        })
+      )
+    })
+  }
   render() {
-    var hasTodos = true;// this.props.viewer.totalCount > 0;
+    const hasTodos = this.props.viewer.allTodos.edges.length > 0;
+    const numRemainingTodos = this.props.viewer.allTodos.edges.filter(x => !x.node.complete).length;
     return (
       <div>
         <section className="todoapp">
@@ -20,6 +41,7 @@ class TodoApp extends React.Component {
             <h1>
               todos
             </h1>
+            <input onClick={() => this._handleMarkAll()} type="checkbox" checked={numRemainingTodos === 0} className="toggle-all" readOnly/>
             <TodoTextInput
               autoFocus={true}
               className="new-todo"
@@ -56,9 +78,24 @@ class TodoApp extends React.Component {
 }
 
 export default Relay.createContainer(TodoApp, {
+  prepareVariables() {
+    return {
+      limit: 2147483647,  // GraphQLInt
+    };
+  },
   fragments: {
     viewer: () => Relay.QL`
       fragment on Viewer {
+        allTodos(first: $limit) {
+          edges {
+            node {
+              ${ChangeTodoStatusMutation.getFragment('todo')},
+              id,
+              complete
+            }
+          }
+        },
+        ${ChangeTodoStatusMutation.getFragment('viewer')},
         ${AddTodoMutation.getFragment('viewer')},
         ${TodoListFooter.getFragment('viewer')},
       }

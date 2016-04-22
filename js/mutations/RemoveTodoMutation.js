@@ -37,7 +37,7 @@ export default class RemoveTodoMutation extends Relay.Mutation {
       parentName: 'viewer',
       parentID: this.props.viewer.id,
       connectionName: 'allTodos',
-      deletedIDFieldName: 'todo{id}',
+      deletedIDFieldName: 'deletedId',
     }];
   }
   getVariables() {
@@ -47,6 +47,7 @@ export default class RemoveTodoMutation extends Relay.Mutation {
   }
   getOptimisticResponse() {
     return {
+      deletedId: this.props.todo.id,
       todo: { id: this.props.todo.id },
       viewer: {id: this.props.viewer.id},
     };

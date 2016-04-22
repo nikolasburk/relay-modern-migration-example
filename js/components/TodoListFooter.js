@@ -1,11 +1,23 @@
 import {IndexLink, Link} from 'react-router';
-
 import React from 'react';
 import Relay from 'react-relay';
+import RemoveTodoMutation from '../mutations/RemoveTodoMutation';
 
 class TodoListFooter extends React.Component {
+  _handleRemoveCompletedTodosPress() {
+    const completedTodos = this.props.viewer.allTodos.edges
+    .map(x => x.node)
+    .filter(x => x.complete);
+
+    completedTodos.forEach((todo) => {
+      Relay.Store.commitUpdate(
+        new RemoveTodoMutation({todo: todo, viewer: this.props.viewer});
+      )
+    })
+  }
   render() {
-    var numRemainingTodos = this.props.viewer.allTodos.edges.filter(x => !x.node.complete).length;;// this.props.viewer.totalCount - numCompletedTodos;
+    const numRemainingTodos = this.props.viewer.allTodos.edges.filter(x => !x.node.complete).length;
+    const numCompletedTodos = this.props.viewer.allTodos.edges.filter(x => x.node.complete).length;
     return (
       <footer className="footer">
         <span className="todo-count">
@@ -22,6 +34,11 @@ class TodoListFooter extends React.Component {
             <Link to="/completed" activeClassName="selected">Completed</Link>
           </li>
         </ul>
+        {numCompletedTodos > 0 &&
+          <span onClick={() => this._handleRemoveCompletedTodosPress()} className="clear-completed">
+            Clear completed
+          </span>
+        }
       </footer>
     );
   }
@@ -37,11 +54,13 @@ export default Relay.createContainer(TodoListFooter, {
   fragments: {
     viewer: () => Relay.QL`
       fragment on Viewer {
+        ${RemoveTodoMutation.getFragment('viewer')},
         allTodos(first: $limit) {
           edges {
             node {
               id,
-              complete
+              complete,
+              ${RemoveTodoMutation.getFragment('todo')}
             },
           },
         }
