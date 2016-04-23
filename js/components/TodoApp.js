@@ -10,8 +10,9 @@ class TodoApp extends React.Component {
   _handleTextInputSave = (text) => {
     Relay.Store.commitUpdate(
       new AddTodoMutation({text, viewer: this.props.viewer})
-    );
-  };
+    )
+  }
+  
   _handleMarkAll() {
     const numRemainingTodos = this.props.viewer.allTodos.edges.filter(x => !x.node.complete).length;
     const newStatus = numRemainingTodos === 0 ? false : true;
