@@ -11,7 +11,7 @@ class TodoListFooter extends React.Component {
 
     completedTodos.forEach((todo) => {
       Relay.Store.commitUpdate(
-        new RemoveTodoMutation({todo: todo, viewer: this.props.viewer});
+        new RemoveTodoMutation({todo: todo, viewer: this.props.viewer})
       )
     })
   }
