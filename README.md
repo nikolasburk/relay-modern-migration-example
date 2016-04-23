@@ -8,14 +8,12 @@ After [downloading this example](https://github.com/graphcool-examples/react-rel
 
 ### 1. Create an account
 
-To run this example, please create a [graph.cool](http://graph.cool) account in order to **get your Relay endpoint**. This shouldn't take longer than 30 seconds. We promise!
-
-Here is an example endpoint: `https://api.graph.cool/relay/v1/__YOUR_PROJECT_ID__ `
+To run this example, please create a [graph.cool](http://graph.cool) account and **copy your `PROJECT_ID`**. This shouldn't take longer than a minute. We promise!
 
 
 ### 2. Configure app data endpoint
 
-Open `js/app.js` and paste your new endpoint to the line containing `new Relay.DefaultNetworkLayer()`. It should now look like this:
+Open `js/app.js` and paste your `PROJECT_ID` to the following line:
 
 ```js
 Relay.injectNetworkLayer(
@@ -25,15 +23,19 @@ Relay.injectNetworkLayer(
 
 ### 3. Configure build schema endpoint
 
-Open `package.json` and set the GraphQL schema url to your schema endpoint. This is based on [babel-plugin-react-relay](https://github.com/graphcool/babel-plugin-react-relay). Here is how it should look like:
+Open `package.json` and insert your `PROJECT_ID` in the following line:
+
 
 ```json
 "react-relay-schema": "https://api.graph.cool/relay/v1/__YOUR_PROJECT_ID__/schema.json"
 ```
 
+This step is needed in order to support Relay. More info can be found here: [babel-plugin-react-relay](https://github.com/graphcool/babel-plugin-react-relay).
+
+
 ### 4. Run the example
 
-That's all needed in order to run this example. Please run the following command and open [localhost:3000](http://localhost:3000) in your browser.
+You're done configuring the example application. Please run the following command and open [localhost:3000](http://localhost:3000) in your browser. Have fun exploring! 🎉
 
 ```sh
 npm install
