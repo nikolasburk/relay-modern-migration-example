@@ -8,10 +8,10 @@ import TodoList from './components/TodoList'
 import ViewerQueries from './queries/ViewerQueries'
 import { browserHistory } from 'react-router'
 
-import './index.css'
+import './style.css'
 
 Relay.injectNetworkLayer(
-  new Relay.DefaultNetworkLayer('https://api.graph.cool/relay/v1/UHJvamVjdDpjaW5ia3lzb2swMDAzeDNpNmZuNHRiM3I3')
+  new Relay.DefaultNetworkLayer('https://api.graph.cool/relay/v1/__PROJECT_ID__')
 )
 
 ReactDOM.render(
