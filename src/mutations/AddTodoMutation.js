@@ -1,17 +1,20 @@
-import Relay from 'react-relay';
+import Relay from 'react-relay'
 
 export default class AddTodoMutation extends Relay.Mutation {
+
   static fragments = {
     viewer: () => Relay.QL`
       fragment on Viewer {
         id,
       }
     `,
-  };
-  getMutation() {
-    return Relay.QL`mutation{createTodo}`;
   }
-  getFatQuery() {
+
+  getMutation () {
+    return Relay.QL`mutation{createTodo}`
+  }
+
+  getFatQuery () {
     return Relay.QL`
       fragment on CreateTodoPayload {
         todo,
@@ -20,29 +23,30 @@ export default class AddTodoMutation extends Relay.Mutation {
           allTodos
         }
       }
-    `;
+    `
   }
-  getConfigs() {
-    return [
-    {
+
+  getConfigs () {
+    return [{
       type: 'RANGE_ADD',
       parentName: 'viewer',
       parentID: this.props.viewer.id,
       connectionName: 'allTodos',
       edgeName: 'edge',
       rangeBehaviors: {
-        '': 'append'
+        '': 'append',
       },
-    }
-    ];
+    }]
   }
-  getVariables() {
+
+  getVariables () {
     return {
       text: this.props.text,
-      complete: false
-    };
+      complete: false,
+    }
   }
-  getOptimisticResponse() {
+
+  getOptimisticResponse () {
     return {
       edge: {
         node: {
@@ -51,8 +55,8 @@ export default class AddTodoMutation extends Relay.Mutation {
         },
       },
       viewer: {
-        id: this.props.viewer.id
+        id: this.props.viewer.id,
       },
-    };
+    }
   }
 }

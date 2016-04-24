@@ -1,4 +1,4 @@
-import Relay from 'react-relay';
+import Relay from 'react-relay'
 
 export default class RenameTodoMutation extends Relay.Mutation {
   static fragments = {
@@ -7,39 +7,39 @@ export default class RenameTodoMutation extends Relay.Mutation {
         id,
       }
     `,
-  };
-  getMutation() {
-    return Relay.QL`mutation{updateTodo}`;
   }
-  getFatQuery() {
+  getMutation () {
+    return Relay.QL`mutation{updateTodo}`
+  }
+  getFatQuery () {
     return Relay.QL`
       fragment on UpdateTodoPayload {
         todo {
           text,
         }
       }
-    `;
+    `
   }
-  getConfigs() {
+  getConfigs () {
     return [{
       type: 'FIELDS_CHANGE',
       fieldIDs: {
         todo: this.props.todo.id,
       },
-    }];
+    }]
   }
-  getVariables() {
+  getVariables () {
     return {
       id: this.props.todo.id,
       text: this.props.text,
-    };
+    }
   }
-  getOptimisticResponse() {
+  getOptimisticResponse () {
     return {
       todo: {
         id: this.props.todo.id,
         text: this.props.text,
       },
-    };
+    }
   }
 }

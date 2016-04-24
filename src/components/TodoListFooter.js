@@ -1,13 +1,18 @@
-import {IndexLink, Link} from 'react-router';
-import React from 'react';
-import Relay from 'react-relay';
-import RemoveTodoMutation from '../mutations/RemoveTodoMutation';
+import {IndexLink, Link} from 'react-router'
+import React, { PropTypes } from 'react'
+import Relay from 'react-relay'
+import RemoveTodoMutation from '../mutations/RemoveTodoMutation'
 
 class TodoListFooter extends React.Component {
-  _handleRemoveCompletedTodosPress() {
+
+  static propTypes = {
+    viewer: PropTypes.object.isRequired,
+  }
+
+  _handleRemoveCompletedTodosPress () {
     const completedTodos = this.props.viewer.allTodos.edges
-    .map(x => x.node)
-    .filter(x => x.complete);
+    .map((x) => x.node)
+    .filter((x) => x.complete)
 
     completedTodos.forEach((todo) => {
       Relay.Store.commitUpdate(
@@ -15,40 +20,41 @@ class TodoListFooter extends React.Component {
       )
     })
   }
-  render() {
-    const numRemainingTodos = this.props.viewer.allTodos.edges.filter(x => !x.node.complete).length;
-    const numCompletedTodos = this.props.viewer.allTodos.edges.filter(x => x.node.complete).length;
+
+  render () {
+    const numRemainingTodos = this.props.viewer.allTodos.edges.filter((x) => !x.node.complete).length
+    const numCompletedTodos = this.props.viewer.allTodos.edges.filter((x) => x.node.complete).length
     return (
-      <footer className="footer">
-        <span className="todo-count">
+      <footer className='footer'>
+        <span className='todo-count'>
           <strong>{numRemainingTodos}</strong> item{numRemainingTodos === 1 ? '' : 's'} left
         </span>
-        <ul className="filters">
+        <ul className='filters'>
           <li>
-            <IndexLink to="/" activeClassName="selected">All</IndexLink>
+            <IndexLink to='/' activeClassName='selected'>All</IndexLink>
           </li>
           <li>
-            <Link to="/active" activeClassName="selected">Active</Link>
+            <Link to='/active' activeClassName='selected'>Active</Link>
           </li>
           <li>
-            <Link to="/completed" activeClassName="selected">Completed</Link>
+            <Link to='/completed' activeClassName='selected'>Completed</Link>
           </li>
         </ul>
         {numCompletedTodos > 0 &&
-          <span onClick={() => this._handleRemoveCompletedTodosPress()} className="clear-completed">
+          <span onClick={() => this._handleRemoveCompletedTodosPress()} className='clear-completed'>
             Clear completed
           </span>
         }
       </footer>
-    );
+    )
   }
 }
 
 export default Relay.createContainer(TodoListFooter, {
-  prepareVariables() {
+  prepareVariables () {
     return {
       limit: 2147483647,  // GraphQLInt
-    };
+    }
   },
 
   fragments: {
@@ -67,4 +73,4 @@ export default Relay.createContainer(TodoListFooter, {
       }
     `,
   },
-});
+})

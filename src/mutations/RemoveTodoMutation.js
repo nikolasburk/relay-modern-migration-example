@@ -1,4 +1,4 @@
-import Relay from 'react-relay';
+import Relay from 'react-relay'
 
 export default class RemoveTodoMutation extends Relay.Mutation {
   static fragments = {
@@ -15,11 +15,11 @@ export default class RemoveTodoMutation extends Relay.Mutation {
         id,
       }
     `,
-  };
-  getMutation() {
-    return Relay.QL`mutation{deleteTodo}`;
   }
-  getFatQuery() {
+  getMutation () {
+    return Relay.QL`mutation{deleteTodo}`
+  }
+  getFatQuery () {
     return Relay.QL`
       fragment on DeleteTodoPayload {
         todo {
@@ -29,27 +29,27 @@ export default class RemoveTodoMutation extends Relay.Mutation {
           allTodos
         }
       }
-    `;
+    `
   }
-  getConfigs() {
+  getConfigs () {
     return [{
       type: 'NODE_DELETE',
       parentName: 'viewer',
       parentID: this.props.viewer.id,
       connectionName: 'allTodos',
       deletedIDFieldName: 'deletedId',
-    }];
+    }]
   }
-  getVariables() {
+  getVariables () {
     return {
       id: this.props.todo.id,
-    };
+    }
   }
-  getOptimisticResponse() {
+  getOptimisticResponse () {
     return {
       deletedId: this.props.todo.id,
       todo: { id: this.props.todo.id },
       viewer: {id: this.props.viewer.id},
-    };
+    }
   }
 }
