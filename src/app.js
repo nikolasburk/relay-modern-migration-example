@@ -1,12 +1,11 @@
 import { IndexRoute, Route } from 'react-router'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { RelayRouter } from 'react-router-relay'
+import { RelayRouter, browserHistory } from 'react-router-relay'
 import Relay from 'react-relay'
 import TodoApp from './components/TodoApp'
 import TodoList from './components/TodoList'
 import ViewerQueries from './queries/ViewerQueries'
-import { browserHistory } from 'react-router'
 
 import './style.css'
 
