@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server -d --hot --inline --progress --colors --history-api-fallback --host 0.0.0.0 --port 3000"
+    "start": "webpack-dev-server -d --hot --inline --no-info --port 3000"
   },
   "react-relay-schema": "https://api.graph.cool/relay/v1/__PROJECT_ID__/schema.json",
   "dependencies": {
