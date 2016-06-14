@@ -1,6 +1,6 @@
 # react-relay-todo-example
 
-:memo: [Todo](http://todomvc.com/) example app built with [React](https://facebook.github.io/react) & [Relay](https://facebook.github.io/relay)
+![] (http://i.imgur.com/Hqwsxmq.png)
 
 ## Getting Started
 
