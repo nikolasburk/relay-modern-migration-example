@@ -90,6 +90,9 @@ class TodoApp extends React.Component {
 }
 
 export default Relay.createContainer(TodoApp, {
+  initialVariables: {
+    limit: 2147483647,
+  },
   prepareVariables () {
     return {
       limit: 2147483647,  // GraphQLInt
