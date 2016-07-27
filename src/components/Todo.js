@@ -18,7 +18,7 @@ class Todo extends React.Component {
   }
 
   _handleCompleteChange = (e) => {
-    var complete = e.target.checked
+    const complete = e.target.checked
     Relay.Store.commitUpdate(
       new ChangeTodoStatusMutation({
         complete,

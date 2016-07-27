@@ -12,7 +12,7 @@ export default class TodoTextInput extends React.Component {
 
   static propTypes = {
     className: PropTypes.string,
-    commitOnBlur: PropTypes.bool.isRequired,
+    commitOnBlur: PropTypes.bool,
     initialValue: PropTypes.string,
     onCancel: PropTypes.func,
     onDelete: PropTypes.func,
