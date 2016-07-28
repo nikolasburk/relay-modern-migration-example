@@ -9,7 +9,7 @@ class TodoListFooter extends React.Component {
     viewer: PropTypes.object.isRequired,
   }
 
-  _handleRemoveCompletedTodosPress () {
+  _handleRemoveCompletedTodosPress = () => {
     const completedTodos = this.props.viewer.allTodos.edges
     .map((x) => x.node)
     .filter((x) => x.complete)
@@ -41,7 +41,7 @@ class TodoListFooter extends React.Component {
           </li>
         </ul>
         {numCompletedTodos > 0 &&
-          <span onClick={() => this._handleRemoveCompletedTodosPress()} className='clear-completed'>
+          <span onClick={this._handleRemoveCompletedTodosPress} className='clear-completed'>
             Clear completed
           </span>
         }

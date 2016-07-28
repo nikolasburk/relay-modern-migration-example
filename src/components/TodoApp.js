@@ -18,7 +18,7 @@ class TodoApp extends React.Component {
     )
   }
 
-  _handleMarkAll () {
+  _handleMarkAll = () => {
     const numRemainingTodos = this.props.viewer.allTodos.edges.filter((x) => !x.node.complete).length
     const newStatus = numRemainingTodos !== 0
 
@@ -37,6 +37,7 @@ class TodoApp extends React.Component {
       )
     })
   }
+
   render () {
     const hasTodos = this.props.viewer.allTodos.edges.length > 0
     const numRemainingTodos = this.props.viewer.allTodos.edges.filter((x) => !x.node.complete).length
@@ -48,7 +49,7 @@ class TodoApp extends React.Component {
               todos
             </h1>
             <input
-              onClick={() => this._handleMarkAll()}
+              onClick={this._handleMarkAll}
               type='checkbox'
               checked={numRemainingTodos === 0}
               className='toggle-all'
