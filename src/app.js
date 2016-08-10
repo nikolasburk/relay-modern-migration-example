@@ -17,13 +17,11 @@ import './style.css'
 
 Relay.injectNetworkLayer(
   new Relay.DefaultNetworkLayer(('https://api.graph.cool/relay/v1/__PROJECT_ID__', {
-    get headers () {
-      return {
-        get SourceExample () { return 'example:react-relay-todo' },
-      }
+    headers: {
+      'x-graphcool-source': `example:react-relay-todo`,
     },
   })
-)
+))
 
 ReactDOM.render(
   <Router
