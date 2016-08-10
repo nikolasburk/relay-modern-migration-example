@@ -16,12 +16,11 @@ import ViewerQueries from './queries/ViewerQueries'
 import './style.css'
 
 Relay.injectNetworkLayer(
-  new Relay.DefaultNetworkLayer(('https://api.graph.cool/relay/v1/__PROJECT_ID__', {
+  new Relay.DefaultNetworkLayer('https://api.graph.cool/relay/v1/__PROJECT_ID__', {
     headers: {
-      'x-graphcool-source': `example:react-relay-todo`,
+      'x-graphcool-source': 'example:react-relay-todo',
     },
-  })
-))
+  }))
 
 ReactDOM.render(
   <Router
