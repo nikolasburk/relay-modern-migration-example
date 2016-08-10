@@ -26,7 +26,7 @@ export default class RemoveTodoMutation extends Relay.Mutation {
           id
         },
         viewer {
-          allTodos
+          allTodoes
         }
       }
     `
@@ -36,7 +36,7 @@ export default class RemoveTodoMutation extends Relay.Mutation {
       type: 'NODE_DELETE',
       parentName: 'viewer',
       parentID: this.props.viewer.id,
-      connectionName: 'allTodos',
+      connectionName: 'allTodoes',
       deletedIDFieldName: 'deletedId',
     }]
   }

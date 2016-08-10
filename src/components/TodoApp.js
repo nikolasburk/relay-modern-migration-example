@@ -19,12 +19,12 @@ class TodoApp extends React.Component {
   }
 
   _handleMarkAll = () => {
-    const numRemainingTodos = this.props.viewer.allTodos.edges.filter((x) => !x.node.complete).length
+    const numRemainingTodos = this.props.viewer.allTodoes.edges.filter((x) => !x.node.complete).length
     const newStatus = numRemainingTodos !== 0
 
     console.log('newStatus', newStatus)
 
-    this.props.viewer.allTodos.edges
+    this.props.viewer.allTodoes.edges
     .map((x) => x.node)
     .filter((x) => x.complete !== newStatus)
     .forEach((todo) => {
@@ -39,8 +39,8 @@ class TodoApp extends React.Component {
   }
 
   render () {
-    const hasTodos = this.props.viewer.allTodos.edges.length > 0
-    const numRemainingTodos = this.props.viewer.allTodos.edges.filter((x) => !x.node.complete).length
+    const hasTodos = this.props.viewer.allTodoes.edges.length > 0
+    const numRemainingTodos = this.props.viewer.allTodoes.edges.filter((x) => !x.node.complete).length
     return (
       <div>
         <section className='todoapp'>
@@ -102,7 +102,7 @@ export default Relay.createContainer(TodoApp, {
   fragments: {
     viewer: () => Relay.QL`
       fragment on Viewer {
-        allTodos(first: $limit) {
+        allTodoes(first: $limit) {
           edges {
             node {
               ${ChangeTodoStatusMutation.getFragment('todo')},

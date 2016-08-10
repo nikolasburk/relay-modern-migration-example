@@ -10,7 +10,7 @@ class TodoListFooter extends React.Component {
   }
 
   _handleRemoveCompletedTodosPress = () => {
-    const completedTodos = this.props.viewer.allTodos.edges
+    const completedTodos = this.props.viewer.allTodoes.edges
     .map((x) => x.node)
     .filter((x) => x.complete)
 
@@ -22,8 +22,8 @@ class TodoListFooter extends React.Component {
   }
 
   render () {
-    const numRemainingTodos = this.props.viewer.allTodos.edges.filter((x) => !x.node.complete).length
-    const numCompletedTodos = this.props.viewer.allTodos.edges.filter((x) => x.node.complete).length
+    const numRemainingTodos = this.props.viewer.allTodoes.edges.filter((x) => !x.node.complete).length
+    const numCompletedTodos = this.props.viewer.allTodoes.edges.filter((x) => x.node.complete).length
     return (
       <footer className='footer'>
         <span className='todo-count'>
@@ -65,7 +65,7 @@ export default Relay.createContainer(TodoListFooter, {
     viewer: () => Relay.QL`
       fragment on Viewer {
         ${RemoveTodoMutation.getFragment('viewer')},
-        allTodos(first: $limit) {
+        allTodoes(first: $limit) {
           edges {
             node {
               id,

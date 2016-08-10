@@ -25,7 +25,7 @@ export default class ChangeTodoStatusMutation extends Relay.Mutation {
           complete,
         },
         viewer {
-          allTodos,
+          allTodoes,
         },
       }
     `

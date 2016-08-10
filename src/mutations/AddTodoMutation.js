@@ -20,7 +20,7 @@ export default class AddTodoMutation extends Relay.Mutation {
         todo,
         edge,
         viewer {
-          allTodos
+          allTodoes
         }
       }
     `
@@ -31,7 +31,7 @@ export default class AddTodoMutation extends Relay.Mutation {
       type: 'RANGE_ADD',
       parentName: 'viewer',
       parentID: this.props.viewer.id,
-      connectionName: 'allTodos',
+      connectionName: 'allTodoes',
       edgeName: 'edge',
       rangeBehaviors: {
         '': 'append',

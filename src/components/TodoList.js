@@ -18,7 +18,7 @@ class TodoList extends React.Component {
     )
 
   renderTodos () {
-    return this.props.viewer.allTodos.edges
+    return this.props.viewer.allTodoes.edges
       .filter(this.filterTodos)
       .reverse()
       .map((edge) =>
@@ -65,7 +65,7 @@ export default Relay.createContainer(TodoList, {
   fragments: {
     viewer: () => Relay.QL`
       fragment on Viewer {
-        allTodos(first: $limit) {
+        allTodoes(first: $limit) {
           edges {
             node {
               id,
