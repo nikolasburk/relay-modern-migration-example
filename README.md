@@ -27,7 +27,11 @@ Open `package.json` and insert your `PROJECT_ID` in the following line:
 
 
 ```json
-"react-relay-schema": "https://api.graph.cool/relay/v1/__YOUR_PROJECT_ID__/schema.json"
+  "graphql": {
+    "request": {
+      "url": "https://api.graph.cool/relay/v1/__YOUR_PROJECT_ID__/"
+    }
+  },
 ```
 
 This step is needed in order to support Relay. More info can be found here: [babel-plugin-react-relay](https://github.com/graphcool/babel-plugin-react-relay).
