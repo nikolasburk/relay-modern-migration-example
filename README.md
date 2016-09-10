@@ -25,7 +25,7 @@ Relay.injectNetworkLayer(
 
 ### 3. Configure build schema endpoint
 
-Open `package.json` and insert your `PROJECT_ID` in the following line:
+Open `package.json` and insert your endpoint in the following line:
 
 
 ```json
