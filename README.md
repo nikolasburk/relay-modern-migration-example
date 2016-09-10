@@ -8,7 +8,9 @@ After [downloading this example](https://github.com/graphcool-examples/react-rel
 
 ### 1. Create an account
 
-To run this example, please create a [graph.cool](http://graph.cool) account and **copy your `PROJECT_ID`**. This shouldn't take longer than a minute. We promise!
+To run this example, please create a [graph.cool](http://graph.cool) account and **copy your endpoint**. This shouldn't take longer than a minute. We promise!
+
+![](http://i.imgur.com/ytXDR4B.gif)
 
 
 ### 2. Configure app data endpoint
