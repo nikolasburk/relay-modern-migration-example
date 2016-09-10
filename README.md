@@ -15,7 +15,7 @@ To run this example, please create a [graph.cool](http://graph.cool) account and
 
 ### 2. Configure app data endpoint
 
-Open `src/app.js` and paste your `PROJECT_ID` to the following line:
+Open `src/app.js` and paste your endpoint to the following line:
 
 ```js
 Relay.injectNetworkLayer(
