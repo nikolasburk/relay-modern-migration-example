@@ -10,7 +10,7 @@ After [downloading this example](https://github.com/graphcool-examples/react-rel
 
 To run this example, please create a [graph.cool](http://graph.cool) account and **copy your endpoint**. This shouldn't take longer than a minute. We promise!
 
-![](http://i.imgur.com/ytXDR4B.gif)
+![](https://i.gyazo.com/a0fb8e342ec9844e466cd6dc0a27516d.gif)
 
 
 ### 2. Configure app data endpoint
