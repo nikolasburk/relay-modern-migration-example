@@ -1,5 +1,7 @@
 # react-relay-todo-example
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/graphcool-examples/react-relay-todo-example.svg)](https://greenkeeper.io/)
+
 ![] (http://i.imgur.com/Hqwsxmq.png)
 
 ## Getting Started
