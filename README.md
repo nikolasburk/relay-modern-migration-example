@@ -1,6 +1,6 @@
 # react-relay-todo-example
 
-![] (http://i.imgur.com/Hqwsxmq.png)
+![](http://i.imgur.com/Hqwsxmq.png)
 
 ## Getting Started
 
