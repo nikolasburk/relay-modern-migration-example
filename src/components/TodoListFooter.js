@@ -52,12 +52,12 @@ class TodoListFooter extends React.Component {
 
 export default Relay.createContainer(TodoListFooter, {
   initialVariables: {
-    limit: 2147483647,
+    limit: 1000,
   },
 
   prepareVariables () {
     return {
-      limit: 2147483647,  // GraphQLInt
+      limit: 1000,  // GraphQLInt
     }
   },
 

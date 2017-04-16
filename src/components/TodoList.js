@@ -44,7 +44,7 @@ class TodoList extends React.Component {
 export default Relay.createContainer(TodoList, {
   initialVariables: {
     status: null,
-    limit: 2147483647,
+    limit: 999,
   },
 
   prepareVariables ({ status }) {
@@ -58,7 +58,7 @@ export default Relay.createContainer(TodoList, {
     }
     return {
       status: nextStatus,
-      limit: 2147483647,  // GraphQLInt
+      limit: 1000,  // GraphQLInt
     }
   },
 
