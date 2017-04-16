@@ -1,52 +1,76 @@
 # react-relay-todo-example
 
-![](http://i.imgur.com/Hqwsxmq.png)
+* [React](https://facebook.github.io/react/): Frontend framework for building user interfaces
+* [Relay](https://facebook.github.io/relay/): Powerful GraphQL client developed by Facebook
+* [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
 
-## Getting Started
+## Example ([Live demo](https://demo-react-relay-todo-example.netlify.com) & [GraphQL Playground](https://api.graph.cool/simple/v1/todo-example))
 
-After [downloading this example](https://github.com/graphcool-examples/react-relay-todo-example/archive/master.zip) please follow these steps.
+> TODO: Create GIF for final product
 
-### 1. Create an account
+## Quickstart
 
-To run this example, please create a [graph.cool](http://graph.cool) account and **copy your endpoint**. This shouldn't take longer than a minute. We promise!
+For more information on how to get started [refer to the full react-relay-todo tutorial](https://www.graph.cool/docs/quickstart/react-relay-todo-example).
 
-![](https://i.gyazo.com/a0fb8e342ec9844e466cd6dc0a27516d.gif)
+### 1. Clone example repository
 
+```sh
+git clone https://github.com/graphcool-examples/react-relay-todo-example.git
+cd react-relay-todo-example
+```
 
-### 2. Configure app data endpoint
+### 2. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
 
-Open `src/app.js` and paste your endpoint to the following line:
+```sh
+# Install Graphcool CLI
+npm install -g graphcool
+
+# Create a new project based on the Todo schema
+graphcool init --url graph.cool/schema/todo 
+```
+
+This creates a GraphQL API for the following schema:
+
+```graphql
+type Todo {
+  text: String!
+  complete: Boolean!
+}
+```
+
+### 3. Connect the app with your GraphQL API
+
+Copy the `Relay API` endpoint to `./src/app.js` as the argument for the constructor of `Relay.DefaultNetworkLayer`, replacing `__RELAY_API_ENDPOINT__ `:
 
 ```js
+// replace `__RELAY_API_ENDPOINT__ ` with the endpoint from the previous step
 Relay.injectNetworkLayer(
-  new Relay.DefaultNetworkLayer('https://api.graph.cool/relay/v1/__YOUR_PROJECT_ID__')
+  new Relay.DefaultNetworkLayer('__RELAY_API_ENDPOINT__')
 );
 ```
 
-### 3. Configure build schema endpoint
+Further, open `package.json` and paste the endpoint as the value for the `url` key, again replacing `__RELAY_API_ENDPOINT__ `:
 
-Open `package.json` and insert your endpoint in the following line:
-
-
-```json
-  "graphql": {
-    "request": {
-      "url": "https://api.graph.cool/relay/v1/__YOUR_PROJECT_ID__/"
-    }
-  },
+```js
+"graphql": {
+  "request": {
+    "url": "__RELAY_API_ENDPOINT__"
+  }
+},
 ```
 
-This step is needed in order to support Relay. More info can be found here: [babel-plugin-react-relay](https://github.com/graphcool/babel-plugin-react-relay).
-
-
-### 4. Run the example
-
-You're done configuring the example application. Please run the following command and open [localhost:3000](http://localhost:3000) in your browser. Have fun exploring! 🎉
+### 4. Install depdendencies & run locally
 
 ```sh
-npm install
-npm start
+yarn install
+yarn start # open http://localhost:3000 in your browser
 ```
+
+## Next steps
+
+* [Advanced GraphQL features](x)
+* [Authentication & Permissions](x)
+* [Implementing business logic with serverless functions](x)
 
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
@@ -54,3 +78,4 @@ npm start
 Join our [Slack community](http://slack.graph.cool/) if you run into issues or have questions. We love talking to you!
 
 ![](http://i.imgur.com/5RHR6Ku.png)
+todo
