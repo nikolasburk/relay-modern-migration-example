@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server -d --hot --inline --no-info --port 3000"
+    "start": "webpack-dev-server -d --hot --inline --no-info --port 3000",
+    "build": "webpack -d --inline --history-api-fallback --config webpack.config.js"
   },
   "graphql": {
     "request": {
