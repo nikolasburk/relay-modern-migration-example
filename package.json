@@ -6,7 +6,7 @@
   },
   "graphql": {
     "request": {
-      "url": "https://api.graph.cool/relay/v1/cj1nq71xyfabv0199bp3a7hhf"
+      "url": "__RELAY_API_ENDPOINT__"
     }
   },
   "dependencies": {
