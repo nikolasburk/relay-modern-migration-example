@@ -4,9 +4,9 @@
 * [Relay](https://facebook.github.io/relay/): Powerful GraphQL client developed by Facebook
 * [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
 
-## Example ([Live demo](https://demo-react-relay-todo-example.netlify.com) & [GraphQL Playground](https://api.graph.cool/simple/v1/todo-example))
+## Example ([Live demo](https://demo-react-relay-todo-example.netlify.com) & [GraphQL Playground](https://api.graph.cool/relay/v1/cj1nq71xyfabv0199bp3a7hhf))
 
-> TODO: Create GIF for final product
+![](http://imgur.com/75LEao7.gif)
 
 ## Quickstart
 
