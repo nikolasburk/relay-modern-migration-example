@@ -1,6 +1,6 @@
 import {IndexLink, Link} from 'react-router'
 import React, { PropTypes } from 'react'
-import Relay from 'react-relay'
+import Relay from 'react-relay/classic'
 import RemoveTodoMutation from '../mutations/RemoveTodoMutation'
 
 class TodoListFooter extends React.Component {

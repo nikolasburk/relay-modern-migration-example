@@ -2,7 +2,7 @@ import React from 'react'
 import Relay, {
   Route,
   RootContainer,
-} from 'react-relay'
+} from 'react-relay/classic'
 import ReactDOM from 'react-dom'
 // import {
 //   Router,
@@ -26,7 +26,7 @@ class ViewerRoute extends Route {
 }
 
 // Paste your endpoint for the Relay API here.
-// Info: https://github.com/graphcool-examples/react-relay-todo-example#2-create-graphql-api-with-graphcool
+// Info: https://github.com/graphcool-examples/react-relay/classic-todo-example#2-create-graphql-api-with-graphcool
 Relay.injectNetworkLayer(
   new Relay.DefaultNetworkLayer('https://api.graph.cool/relay/v1/cj1nq71xyfabv0199bp3a7hhf')
 )
