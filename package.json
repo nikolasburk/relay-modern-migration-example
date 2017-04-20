@@ -6,7 +6,7 @@
   },
   "graphql": {
     "request": {
-      "url": "__RELAY_API_ENDPOINT__"
+      "url": "https://api.graph.cool/relay/v1/cj1nq71xyfabv0199bp3a7hhf"
     }
   },
   "dependencies": {
@@ -15,7 +15,7 @@
     "history": "3.0.0",
     "react": "15.2.1",
     "react-dom": "15.2.1",
-    "react-relay": "^0.9.3",
+    "react-relay": "0.9.3",
     "react-router": "2.5.2",
     "react-router-relay": "0.13.3"
   },

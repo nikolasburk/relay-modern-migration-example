@@ -42,30 +42,10 @@ class TodoList extends React.Component {
 }
 
 export default Relay.createContainer(TodoList, {
-  initialVariables: {
-    status: null,
-    limit: 1000,
-  },
-
-  prepareVariables ({ status }) {
-    var nextStatus
-    if (status === 'active' || status === 'completed') {
-      nextStatus = status
-    } else {
-      // This matches the Backbone example, which displays all todos on an
-      // invalid route.
-      nextStatus = 'any'
-    }
-    return {
-      status: nextStatus,
-      limit: 1000,  // GraphQLInt
-    }
-  },
-
   fragments: {
     viewer: () => Relay.QL`
       fragment on Viewer {
-        allTodoes(first: $limit) {
+        allTodoes(first: 1000) {
           edges {
             node {
               id,

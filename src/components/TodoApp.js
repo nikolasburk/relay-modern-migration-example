@@ -4,12 +4,13 @@ import ChangeTodoStatusMutation from '../mutations/ChangeTodoStatusMutation'
 import AddTodoMutation from '../mutations/AddTodoMutation'
 import TodoListFooter from './TodoListFooter'
 import TodoTextInput from './TodoTextInput'
+import TodoList from './TodoList'
 
 class TodoApp extends React.Component {
 
   static propTypes = {
     viewer: PropTypes.object.isRequired,
-    children: PropTypes.element.isRequired,
+    // children: PropTypes.element.isRequired,
   }
 
   _handleTextInputSave = (text) => {
@@ -63,7 +64,12 @@ class TodoApp extends React.Component {
             />
           </header>
 
-          {this.props.children}
+          <TodoList
+            viewer={this.props.viewer}
+            params={{
+              status: 'active',
+            }}
+          />
 
           {hasTodos &&
             <TodoListFooter
@@ -91,18 +97,10 @@ class TodoApp extends React.Component {
 }
 
 export default Relay.createContainer(TodoApp, {
-  initialVariables: {
-    limit: 1000,
-  },
-  prepareVariables () {
-    return {
-      limit: 1000,  // GraphQLInt
-    }
-  },
   fragments: {
     viewer: () => Relay.QL`
       fragment on Viewer {
-        allTodoes(first: $limit) {
+        allTodoes(first: 1000) {
           edges {
             node {
               ${ChangeTodoStatusMutation.getFragment('todo')},
@@ -114,6 +112,7 @@ export default Relay.createContainer(TodoApp, {
         ${ChangeTodoStatusMutation.getFragment('viewer')},
         ${AddTodoMutation.getFragment('viewer')},
         ${TodoListFooter.getFragment('viewer')},
+        ${TodoList.getFragment('viewer')}
       }
     `,
   },

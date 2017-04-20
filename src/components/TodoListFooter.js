@@ -51,21 +51,11 @@ class TodoListFooter extends React.Component {
 }
 
 export default Relay.createContainer(TodoListFooter, {
-  initialVariables: {
-    limit: 1000,
-  },
-
-  prepareVariables () {
-    return {
-      limit: 1000,  // GraphQLInt
-    }
-  },
-
   fragments: {
     viewer: () => Relay.QL`
       fragment on Viewer {
         ${RemoveTodoMutation.getFragment('viewer')},
-        allTodoes(first: $limit) {
+        allTodoes(first: 1000) {
           edges {
             node {
               id,
