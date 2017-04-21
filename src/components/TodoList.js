@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react'
 var {
   createFragmentContainer,
   graphql,
-} = require('react-relay/compat')
+} = require('react-relay')
 
 class TodoList extends React.Component {
 

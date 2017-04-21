@@ -1,32 +1,34 @@
 import React from 'react'
-import Relay, {
+// import Relay, {
+//   Route,
+//   RootContainer,
+// } from 'react-relay/classic'
+// import RelayClassic from 'react-relay/classic'
+import {
+  Router,
+  IndexRoute,
   Route,
-  RootContainer,
-} from 'react-relay/classic'
-import RelayClassic from 'react-relay/classic'
-
+  browserHistory,
+  applyRouterMiddleware,
+} from 'react-router'
 import ReactDOM from 'react-dom'
 import TodoApp from './components/TodoApp'
+import TodoList from './components/TodoList'
+import useRelay from 'react-router-relay'
 const {
   QueryRenderer,
   graphql,
-} = require('react-relay/compat') // or require('react-relay/compat') for compatibility
-
+} = require('react-relay') // or require('react-relay/compat') for compatibility
+import environment from './createRelayEnvironment'
+import ViewerQueries from './queries/ViewerQueries'
 
 import './style.css'
 
-// class ViewerRoute extends Route {
-//   static queries = {
-//     viewer: () => Relay.QL`query { viewer }`,
-//   }
-//   static routeName = 'ViewerRoute'
-// }
-
 // Paste your endpoint for the Relay API here.
 // Info: https://github.com/graphcool-examples/react-relay/classic-todo-example#2-create-graphql-api-with-graphcool
-Relay.injectNetworkLayer(
-  new Relay.DefaultNetworkLayer('https://api.graph.cool/relay/v1/cj1nq71xyfabv0199bp3a7hhf')
-)
+// Relay.injectNetworkLayer(
+//   new Relay.DefaultNetworkLayer('https://api.graph.cool/relay/v1/cj1nq71xyfabv0199bp3a7hhf')
+// )
 
 // const root = <Relay.RootContainer
 //   Component={TodoApp}
@@ -43,7 +45,7 @@ Relay.injectNetworkLayer(
 // />
 
 const root = <QueryRenderer
-  environment={RelayClassic.Store}
+  environment={environment}
   query={graphql`
     query appQuery {
       viewer {
@@ -64,11 +66,11 @@ ReactDOM.render(
   root,
   document.getElementById('root')
 )
-
+//
 // ReactDOM.render(
 //   <Router
 //     forceFetch
-//     environment={Relay.Store}
+//     environment={environment}
 //     render={applyRouterMiddleware(useRelay)}
 //     history={browserHistory}
 //   >

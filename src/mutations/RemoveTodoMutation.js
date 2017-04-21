@@ -1,5 +1,5 @@
 // var Relay = require('react-relay/classic')
-const {commitMutation, graphql} = require('react-relay/compat')
+const {commitMutation, graphql} = require('react-relay')
 
 const mutation = graphql`
   mutation RemoveTodoMutation(
@@ -38,7 +38,7 @@ function commit(environment, todoId, viewerId) {
     environment,
     {
       mutation,
-      variables: {input: { id: todoId }},
+      variables: {input: { id: todoId, clientMutationId: 'asd' }},
       configs: getConfigs(viewerId),
     }
   )

@@ -1,4 +1,4 @@
-const {commitMutation, graphql} = require('react-relay/compat')
+const {commitMutation, graphql} = require('react-relay')
 
 const mutation = graphql`
   mutation CreateTodoMutation(
@@ -50,7 +50,7 @@ function commit(environment, text, complete, viewerId) {
     environment,
     {
       mutation,
-      variables: {input: {text, complete}},
+      variables: {input: {text, complete, clientMutationId: 'asd'}},
       configs: getConfigs(viewerId)
     }
   )

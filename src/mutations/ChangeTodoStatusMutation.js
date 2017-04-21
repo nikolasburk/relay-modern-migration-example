@@ -1,5 +1,5 @@
 // var Relay = require('react-relay/classic')
-const {commitMutation, graphql} = require('react-relay/compat')
+const {commitMutation, graphql} = require('react-relay')
 
 const mutation = graphql`
   mutation ChangeTodoStatusMutation(
@@ -56,7 +56,7 @@ function commit(environment, todo, complete, viewerId) {
     environment,
     {
       mutation,
-      variables: {input: { id: todo.id, text: todo.text, complete }},
+      variables: {input: { id: todo.id, text: todo.text, complete, clientMutationId: 'asd' }},
       configs: getConfigs(viewerId),
       optimisticResponse: () => getOptimisticResponse(complete, todo.id, viewerId),
     }

@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react'
 var {
   createFragmentContainer,
   graphql,
-} = require('react-relay/compat')
-import Relay from 'react-relay/classic'
+} = require('react-relay')
+// import Relay from 'react-relay/classic'
 import ChangeTodoStatusMutation from '../mutations/ChangeTodoStatusMutation'
 import CreateTodoMutation from '../mutations/CreateTodoMutation'
 import TodoListFooter from './TodoListFooter'

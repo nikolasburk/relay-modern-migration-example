@@ -4,6 +4,7 @@ const {
   RecordSource,
   Store,
 } = require('relay-runtime')
+// import Relay from 'react-relay/classic'
 
 // Define a function that fetches the results of an operation (query/mutation/etc)
 // and returns its results as a Promise:
@@ -36,5 +37,5 @@ const store = new Store(source)
 
 export default new Environment({
   network,
-  store,
+  store
 })
