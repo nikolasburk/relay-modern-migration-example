@@ -22,10 +22,9 @@ const mutation = graphql`
   }
 `
 
-function getOptimisticResponse (deletedId, todoId, viewerId) {
+function getOptimisticResponse (todoId, viewerId) {
   return {
-    deletedId,
-    todo: { id: todoId },
+    deletedId: todoId,
     viewer: {id: viewerId},
   }
 }
@@ -47,7 +46,7 @@ function commit(environment, todoId, viewerId) {
       mutation,
       variables: {input: { id: todoId, clientMutationId: 'asd' }},
       configs: getConfigs(viewerId),
-      optimisticResponse: () => getOptimisticResponse(text, todo.id, viewerId),
+      optimisticResponse: () => getOptimisticResponse(todoId, viewerId),
     }
   )
 }
