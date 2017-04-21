@@ -4,17 +4,7 @@ import Relay, {
   RootContainer,
 } from 'react-relay/classic'
 import ReactDOM from 'react-dom'
-// import {
-//   Router,
-//   IndexRoute,
-//   // Route,
-//   browserHistory,
-//   applyRouterMiddleware,
-// } from 'react-router'
-// import useRelay from 'reac lay'
 import TodoApp from './components/TodoApp'
-// import TodoList from './components/TodoList'
-// import ViewerQueries from './queries/ViewerQueries'
 
 import './style.css'
 

@@ -1,5 +1,9 @@
 import {IndexLink, Link} from 'react-router'
 import React, { PropTypes } from 'react'
+var {
+  createFragmentContainer,
+  graphql,
+} = require('react-relay/compat')
 import Relay from 'react-relay/classic'
 import RemoveTodoMutation from '../mutations/RemoveTodoMutation'
 
@@ -15,8 +19,13 @@ class TodoListFooter extends React.Component {
     .filter((x) => x.complete)
 
     completedTodos.forEach((todo) => {
-      Relay.Store.commitUpdate(
-        new RemoveTodoMutation({todo: todo, viewer: this.props.viewer})
+      // Relay.Store.commitUpdate(
+      //   new RemoveTodoMutation({todo: todo, viewer: this.props.viewer})
+      // )
+      RemoveTodoMutation.commit(
+        this.props.relay.environment,
+        todo.id,
+        this.props.viewer.id
       )
     })
   }
@@ -50,21 +59,19 @@ class TodoListFooter extends React.Component {
   }
 }
 
-export default Relay.createContainer(TodoListFooter, {
-  fragments: {
-    viewer: () => Relay.QL`
-      fragment on Viewer {
-        ${RemoveTodoMutation.getFragment('viewer')},
-        allTodoes(first: 1000) {
-          edges {
-            node {
-              id,
-              complete,
-              ${RemoveTodoMutation.getFragment('todo')}
-            },
+export default createFragmentContainer(TodoListFooter, {
+  viewer: graphql`
+    fragment TodoListFooter_viewer on Viewer {
+#      ...RemoveTodoMutation_viewer,
+      allTodoes(first: 1000) {
+        edges {
+          node {
+            id,
+            complete,
+#            ...RemoveTodoMutation_todo
           },
-        }
+        },
       }
-    `,
-  },
+    }
+  `,
 })

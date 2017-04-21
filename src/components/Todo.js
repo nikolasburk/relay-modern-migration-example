@@ -1,4 +1,8 @@
 import React, { PropTypes } from 'react'
+var {
+  createFragmentContainer,
+  graphql,
+} = require('react-relay/compat')
 import Relay from 'react-relay/classic'
 import classnames from 'classnames'
 import ChangeTodoStatusMutation from '../mutations/ChangeTodoStatusMutation'
@@ -19,12 +23,11 @@ class Todo extends React.Component {
 
   _handleCompleteChange = (e) => {
     const complete = e.target.checked
-    Relay.Store.commitUpdate(
-      new ChangeTodoStatusMutation({
-        complete,
-        todo: this.props.todo,
-        viewer: this.props.viewer,
-      })
+    ChangeTodoStatusMutation.commit(
+      this.props.relay.environment,
+      this.props.todo,
+      complete,
+      this.props.viewer.id
     )
   }
 
@@ -47,14 +50,25 @@ class Todo extends React.Component {
 
   _handleTextInputSave = (text) => {
     this._setEditMode(false)
-    Relay.Store.commitUpdate(
-      new RenameTodoMutation({todo: this.props.todo, text})
+    // Relay.Store.commitUpdate(
+    //   new RenameTodoMutation({todo: this.props.todo, text})
+    // )
+    RenameTodoMutation.commit(
+      this.props.relay.environment,
+      this.props.todo,
+      text,
+      this.props.viewer.id
     )
   }
 
   _removeTodo () {
-    Relay.Store.commitUpdate(
-      new RemoveTodoMutation({todo: this.props.todo, viewer: this.props.viewer})
+    // Relay.Store.commitUpdate(
+    //   new RemoveTodoMutation({todo: this.props.todo, viewer: this.props.viewer})
+    // )
+    RemoveTodoMutation.commit(
+      this.props.relay.environment,
+      this.props.todo.id,
+      this.props.viewer.id
     )
   }
 
@@ -103,24 +117,22 @@ class Todo extends React.Component {
   }
 }
 
-export default Relay.createContainer(Todo, {
-  fragments: {
-    todo: () => Relay.QL`
-      fragment on Todo {
-        complete,
-        id,
-        text,
-        ${ChangeTodoStatusMutation.getFragment('todo')},
-        ${RemoveTodoMutation.getFragment('todo')},
-        ${RenameTodoMutation.getFragment('todo')},
-      }
-    `,
-    viewer: () => Relay.QL`
-      fragment on Viewer {
-        id,
-        ${ChangeTodoStatusMutation.getFragment('viewer')},
-        ${RemoveTodoMutation.getFragment('viewer')},
-       }
-    `,
-  },
+export default createFragmentContainer(Todo, {
+  todo: graphql`
+    fragment Todo_todo on Todo {
+      complete,
+      id,
+      text,
+#      ...ChangeTodoStatusMutation_todo,
+#      ...RemoveTodoMutation_todo,
+#      ...RenameTodoMutation_todo,
+    }
+  `,
+  viewer: graphql`
+    fragment Todo_viewer on Viewer {
+      id,
+#      ...ChangeTodoStatusMutation_viewer,
+#      ...RemoveTodoMutation_viewer,
+     }
+  `,
 })

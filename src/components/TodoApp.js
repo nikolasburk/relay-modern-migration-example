@@ -1,7 +1,11 @@
 import React, { PropTypes } from 'react'
+var {
+  createFragmentContainer,
+  graphql,
+} = require('react-relay/compat')
 import Relay from 'react-relay/classic'
 import ChangeTodoStatusMutation from '../mutations/ChangeTodoStatusMutation'
-import AddTodoMutation from '../mutations/AddTodoMutation'
+import CreateTodoMutation from '../mutations/CreateTodoMutation'
 import TodoListFooter from './TodoListFooter'
 import TodoTextInput from './TodoTextInput'
 import TodoList from './TodoList'
@@ -14,28 +18,34 @@ class TodoApp extends React.Component {
   }
 
   _handleTextInputSave = (text) => {
-    Relay.Store.commitUpdate(
-      new AddTodoMutation({text, viewer: this.props.viewer})
+    CreateTodoMutation.commit(
+      this.props.relay.environment,
+      text,
+      false,
+      this.props.viewer.id
     )
   }
 
   _handleMarkAll = () => {
     const numRemainingTodos = this.props.viewer.allTodoes.edges.filter((x) => !x.node.complete).length
     const newStatus = numRemainingTodos !== 0
-
-    console.log('newStatus', newStatus)
-
     this.props.viewer.allTodoes.edges
     .map((x) => x.node)
     .filter((x) => x.complete !== newStatus)
     .forEach((todo) => {
-      Relay.Store.commitUpdate(
-        new ChangeTodoStatusMutation({
-          complete: newStatus,
-          todo: todo,
-          viewer: this.props.viewer,
-        })
-      )
+      // ChangeTodoStatusMutation.commit(
+      //   this.props.relay.environment,
+      //   complete,
+      //   todo,
+      //   this.props.viewer.id
+      // )
+      // Relay.Store.commitUpdate(
+      //   new ChangeTodoStatusMutation({
+      //     complete: newStatus,
+      //     todo: todo,
+      //     viewer: this.props.viewer,
+      //   })
+      // )
     })
   }
 
@@ -67,7 +77,7 @@ class TodoApp extends React.Component {
           <TodoList
             viewer={this.props.viewer}
             params={{
-              status: 'active',
+              status: 'all',
             }}
           />
 
@@ -96,24 +106,23 @@ class TodoApp extends React.Component {
   }
 }
 
-export default Relay.createContainer(TodoApp, {
-  fragments: {
-    viewer: () => Relay.QL`
-      fragment on Viewer {
-        allTodoes(first: 1000) {
-          edges {
-            node {
-              ${ChangeTodoStatusMutation.getFragment('todo')},
-              id,
-              complete
-            }
+export default createFragmentContainer(TodoApp, {
+  viewer: graphql`
+    fragment TodoApp_viewer on Viewer {
+      id
+      allTodoes(first: 1000) {
+        edges {
+          node {
+#            ...ChangeTodoStatusMutation_todo,
+            id,
+            complete
           }
-        },
-        ${ChangeTodoStatusMutation.getFragment('viewer')},
-        ${AddTodoMutation.getFragment('viewer')},
-        ${TodoListFooter.getFragment('viewer')},
-        ${TodoList.getFragment('viewer')}
-      }
-    `,
-  },
+        }
+      },
+#      ...CreateTodoMutation_viewer,
+#      ...ChangeTodoStatusMutation_viewer,
+      ...TodoListFooter_viewer,
+      ...TodoList_viewer
+    }
+  `,
 })

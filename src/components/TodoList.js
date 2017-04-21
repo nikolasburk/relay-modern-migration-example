@@ -1,6 +1,9 @@
 import Todo from './Todo'
 import React, { PropTypes } from 'react'
-import Relay from 'react-relay/classic'
+var {
+  createFragmentContainer,
+  graphql,
+} = require('react-relay/compat')
 
 class TodoList extends React.Component {
 
@@ -41,21 +44,19 @@ class TodoList extends React.Component {
   }
 }
 
-export default Relay.createContainer(TodoList, {
-  fragments: {
-    viewer: () => Relay.QL`
-      fragment on Viewer {
-        allTodoes(first: 1000) {
-          edges {
-            node {
-              id,
-              complete,
-              ${Todo.getFragment('todo')},
-            },
+export default createFragmentContainer(TodoList, {
+  viewer: graphql`
+    fragment TodoList_viewer on Viewer {
+      allTodoes(first: 1000) {
+        edges {
+          node {
+            id,
+            complete,
+            ...Todo_todo,
           },
         },
-        ${Todo.getFragment('viewer')},
-      }
-    `,
-  },
+      },
+      ...Todo_viewer,
+    }
+  `,
 })
