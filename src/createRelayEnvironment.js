@@ -4,15 +4,12 @@ const {
   RecordSource,
   Store,
 } = require('relay-runtime')
-// import Relay from 'react-relay/classic'
 
 // Define a function that fetches the results of an operation (query/mutation/etc)
 // and returns its results as a Promise:
 function fetchQuery(
   operation,
   variables,
-  cacheConfig,
-  uploadables,
 ) {
   return fetch('https://api.graph.cool/relay/v1/cj1nq71xyfabv0199bp3a7hhf', {
     method: 'POST',

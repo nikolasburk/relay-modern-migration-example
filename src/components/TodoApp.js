@@ -1,12 +1,10 @@
 import React, { PropTypes } from 'react'
-var {
+import {
   createFragmentContainer,
   graphql,
-} = require('react-relay')
-// import Relay from 'react-relay/classic'
+} from 'react-relay'
 import ChangeTodoStatusMutation from '../mutations/ChangeTodoStatusMutation'
 import CreateTodoMutation from '../mutations/CreateTodoMutation'
-import TodoListFooter from './TodoListFooter'
 import TodoTextInput from './TodoTextInput'
 import TodoList from './TodoList'
 
@@ -14,7 +12,6 @@ class TodoApp extends React.Component {
 
   static propTypes = {
     viewer: PropTypes.object.isRequired,
-    // children: PropTypes.element.isRequired,
   }
 
   _handleTextInputSave = (text) => {
@@ -43,7 +40,6 @@ class TodoApp extends React.Component {
   }
 
   render () {
-    const hasTodos = this.props.viewer.allTodoes.edges.length > 0
     const numRemainingTodos = this.props.viewer.allTodoes.edges.filter((x) => !x.node.complete).length
     return (
       <div>
@@ -73,13 +69,6 @@ class TodoApp extends React.Component {
               status: 'all',
             }}
           />
-
-          {/*{hasTodos &&*/}
-            {/*<TodoListFooter*/}
-              {/*todos={this.props.viewer.todos}*/}
-              {/*viewer={this.props.viewer}*/}
-            {/*/>*/}
-          {/*}*/}
         </section>
         <footer className='info'>
           <p>
@@ -106,15 +95,11 @@ export default createFragmentContainer(TodoApp, {
       allTodoes(first: 1000) {
         edges {
           node {
-#            ...ChangeTodoStatusMutation_todo,
             id,
             complete
           }
         }
       },
-#      ...CreateTodoMutation_viewer,
-#      ...ChangeTodoStatusMutation_viewer,
-      ...TodoListFooter_viewer,
       ...TodoList_viewer
     }
   `,

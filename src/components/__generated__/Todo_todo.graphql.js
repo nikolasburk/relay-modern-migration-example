@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Todo_todo.graphql
- * @generated SignedSource<<a4e0ac570a14d2b2951c18252f3407e8>>
+ * @generated SignedSource<<615a9a1e3c3068048cd3a50065da5a04>>
  * @flow
  * @nogrep
  */
@@ -13,8 +13,8 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type Todo_todo = {
-  complete: boolean;
   id: string;
+  complete: boolean;
   text: string;
 };
 */
@@ -31,14 +31,14 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "complete",
+      "name": "id",
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "id",
+      "name": "complete",
       "storageKey": null
     },
     {

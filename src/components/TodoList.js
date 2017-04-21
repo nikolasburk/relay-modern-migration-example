@@ -1,9 +1,9 @@
 import Todo from './Todo'
 import React, { PropTypes } from 'react'
-var {
+import {
   createFragmentContainer,
   graphql,
-} = require('react-relay')
+} from 'react-relay'
 
 class TodoList extends React.Component {
 

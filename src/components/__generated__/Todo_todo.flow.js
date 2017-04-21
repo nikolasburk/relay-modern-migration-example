@@ -5,14 +5,14 @@
  *   relay-compiler
  *
  * @providesModule Todo_todo.flow
- * @generated SignedSource<<535f2f77aeb69a7de631b7e0b1b0e488>>
+ * @generated SignedSource<<ff51102ace0273a2616236954da94c93>>
  * @flow
  */
 
 'use strict';
 
 export type Todo_todo = {
-  complete: boolean;
   id: string;
+  complete: boolean;
   text: string;
 };

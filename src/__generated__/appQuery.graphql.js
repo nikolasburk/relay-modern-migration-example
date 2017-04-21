@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule appQuery.graphql
- * @generated SignedSource<<a08687d5d6664cd232a973440c93a954>>
- * @relayHash 80f0aa6427aefa094e2c5991cbc36681
+ * @generated SignedSource<<d29aa1ebbe61c1931e910349c39e425b>>
+ * @relayHash d858a9442a1126b41389efb58096e0e9
  * @flow
  * @nogrep
  */
@@ -36,19 +36,7 @@ fragment TodoApp_viewer on Viewer {
       }
     }
   }
-  ...TodoListFooter_viewer
   ...TodoList_viewer
-}
-
-fragment TodoListFooter_viewer on Viewer {
-  allTodoes(first: 1000) {
-    edges {
-      node {
-        id
-        complete
-      }
-    }
-  }
 }
 
 fragment TodoList_viewer on Viewer {
@@ -65,8 +53,8 @@ fragment TodoList_viewer on Viewer {
 }
 
 fragment Todo_todo on Todo {
-  complete
   id
+  complete
   text
 }
 
@@ -213,7 +201,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query appQuery {\n  viewer {\n    ...TodoApp_viewer\n    id\n  }\n}\n\nfragment TodoApp_viewer on Viewer {\n  id\n  allTodoes(first: 1000) {\n    edges {\n      node {\n        id\n        complete\n      }\n    }\n  }\n  ...TodoListFooter_viewer\n  ...TodoList_viewer\n}\n\nfragment TodoListFooter_viewer on Viewer {\n  allTodoes(first: 1000) {\n    edges {\n      node {\n        id\n        complete\n      }\n    }\n  }\n}\n\nfragment TodoList_viewer on Viewer {\n  allTodoes(first: 1000) {\n    edges {\n      node {\n        id\n        complete\n        ...Todo_todo\n      }\n    }\n  }\n  ...Todo_viewer\n}\n\nfragment Todo_todo on Todo {\n  complete\n  id\n  text\n}\n\nfragment Todo_viewer on Viewer {\n  id\n}\n"
+  "text": "query appQuery {\n  viewer {\n    ...TodoApp_viewer\n    id\n  }\n}\n\nfragment TodoApp_viewer on Viewer {\n  id\n  allTodoes(first: 1000) {\n    edges {\n      node {\n        id\n        complete\n      }\n    }\n  }\n  ...TodoList_viewer\n}\n\nfragment TodoList_viewer on Viewer {\n  allTodoes(first: 1000) {\n    edges {\n      node {\n        id\n        complete\n        ...Todo_todo\n      }\n    }\n  }\n  ...Todo_viewer\n}\n\nfragment Todo_todo on Todo {\n  id\n  complete\n  text\n}\n\nfragment Todo_viewer on Viewer {\n  id\n}\n"
 };
 
 module.exports = batch;

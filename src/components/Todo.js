@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react'
-var {
+import {
   createFragmentContainer,
   graphql,
-} = require('react-relay')
-// import Relay from 'react-relay/classic'
+} from 'react-relay'
 import classnames from 'classnames'
 import ChangeTodoStatusMutation from '../mutations/ChangeTodoStatusMutation'
 import RemoveTodoMutation from '../mutations/RemoveTodoMutation'
@@ -114,19 +113,14 @@ class Todo extends React.Component {
 export default createFragmentContainer(Todo, {
   todo: graphql`
     fragment Todo_todo on Todo {
-      complete,
       id,
+      complete,
       text,
-#      ...ChangeTodoStatusMutation_todo,
-#      ...RemoveTodoMutation_todo,
-#      ...RenameTodoMutation_todo,
     }
   `,
   viewer: graphql`
     fragment Todo_viewer on Viewer {
       id,
-#      ...ChangeTodoStatusMutation_viewer,
-#      ...RemoveTodoMutation_viewer,
      }
   `,
 })

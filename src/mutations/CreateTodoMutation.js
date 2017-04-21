@@ -1,4 +1,4 @@
-const {commitMutation, graphql} = require('react-relay')
+import {commitMutation, graphql} from 'react-relay'
 
 const mutation = graphql`
   mutation CreateTodoMutation(
@@ -32,6 +32,20 @@ const mutation = graphql`
   }
 `
 
+function getOptimisticResponse (text, viewerId) {
+  return {
+    edge: {
+      node: {
+        complete: false,
+        text,
+      },
+    },
+    viewer: {
+      id: viewerId,
+    },
+  }
+}
+
 function getConfigs(viewerId) {
   return [{
     type: 'RANGE_ADD',
@@ -51,7 +65,8 @@ function commit(environment, text, complete, viewerId) {
     {
       mutation,
       variables: {input: {text, complete, clientMutationId: 'asd'}},
-      configs: getConfigs(viewerId)
+      configs: getConfigs(viewerId),
+      optimisticResponse: () => getOptimisticResponse(text, viewerId),
     }
   )
 }

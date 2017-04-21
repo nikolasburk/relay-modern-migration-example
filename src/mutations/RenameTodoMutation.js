@@ -1,9 +1,8 @@
-// var Relay = require('react-relay/classic')
-const {commitMutation, graphql} = require('react-relay')
+import {commitMutation, graphql} from 'react-relay'
 
 const mutation = graphql`
   mutation RenameTodoMutation(
-  $input: UpdateTodoInput!
+    $input: UpdateTodoInput!
   ) {
     updateTodo(input: $input) {
       todo {
@@ -64,51 +63,3 @@ function commit(environment, todo, text, viewerId) {
 }
 
 export default {commit}
-
-// export default class RenameTodoMutation extends Relay.Mutation {
-//   static fragments = {
-//     todo: () => Relay.QL`
-//       fragment on Todo {
-//         id,
-//       }
-//     `,
-//   }
-//
-//   getMutation () {
-//     return Relay.QL`mutation{updateTodo}`
-//   }
-//
-//   getFatQuery () {
-//     return Relay.QL`
-//       fragment on UpdateTodoPayload {
-//         todo {
-//           text,
-//         }
-//       }
-//     `
-//   }
-//   getConfigs () {
-//     return [{
-//       type: 'FIELDS_CHANGE',
-//       fieldIDs: {
-//         todo: this.props.todo.id,
-//       },
-//     }]
-//   }
-//
-//   getVariables () {
-//     return {
-//       id: this.props.todo.id,
-//       text: this.props.text,
-//     }
-//   }
-//
-//   getOptimisticResponse () {
-//     return {
-//       todo: {
-//         id: this.props.todo.id,
-//         text: this.props.text,
-//       },
-//     }
-//   }
-// }
