@@ -33,19 +33,12 @@ class TodoApp extends React.Component {
     .map((x) => x.node)
     .filter((x) => x.complete !== newStatus)
     .forEach((todo) => {
-      // ChangeTodoStatusMutation.commit(
-      //   this.props.relay.environment,
-      //   complete,
-      //   todo,
-      //   this.props.viewer.id
-      // )
-      // Relay.Store.commitUpdate(
-      //   new ChangeTodoStatusMutation({
-      //     complete: newStatus,
-      //     todo: todo,
-      //     viewer: this.props.viewer,
-      //   })
-      // )
+      ChangeTodoStatusMutation.commit(
+        this.props.relay.environment,
+        complete,
+        todo,
+        this.props.viewer.id
+      )
     })
   }
 
@@ -81,12 +74,12 @@ class TodoApp extends React.Component {
             }}
           />
 
-          {hasTodos &&
-            <TodoListFooter
-              todos={this.props.viewer.todos}
-              viewer={this.props.viewer}
-            />
-          }
+          {/*{hasTodos &&*/}
+            {/*<TodoListFooter*/}
+              {/*todos={this.props.viewer.todos}*/}
+              {/*viewer={this.props.viewer}*/}
+            {/*/>*/}
+          {/*}*/}
         </section>
         <footer className='info'>
           <p>

@@ -50,9 +50,6 @@ class Todo extends React.Component {
 
   _handleTextInputSave = (text) => {
     this._setEditMode(false)
-    // Relay.Store.commitUpdate(
-    //   new RenameTodoMutation({todo: this.props.todo, text})
-    // )
     RenameTodoMutation.commit(
       this.props.relay.environment,
       this.props.todo,
@@ -62,9 +59,6 @@ class Todo extends React.Component {
   }
 
   _removeTodo () {
-    // Relay.Store.commitUpdate(
-    //   new RemoveTodoMutation({todo: this.props.todo, viewer: this.props.viewer})
-    // )
     RemoveTodoMutation.commit(
       this.props.relay.environment,
       this.props.todo.id,
