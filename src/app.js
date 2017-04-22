@@ -4,17 +4,7 @@ import Relay, {
   RootContainer,
 } from 'react-relay'
 import ReactDOM from 'react-dom'
-// import {
-//   Router,
-//   IndexRoute,
-//   // Route,
-//   browserHistory,
-//   applyRouterMiddleware,
-// } from 'react-router'
-// import useRelay from 'reac lay'
 import TodoApp from './components/TodoApp'
-// import TodoList from './components/TodoList'
-// import ViewerQueries from './queries/ViewerQueries'
 
 import './style.css'
 
@@ -25,8 +15,6 @@ class ViewerRoute extends Route {
   static routeName = 'ViewerRoute'
 }
 
-// Paste your endpoint for the Relay API here.
-// Info: https://github.com/graphcool-examples/react-relay-todo-example#2-create-graphql-api-with-graphcool
 Relay.injectNetworkLayer(
   new Relay.DefaultNetworkLayer('https://api.graph.cool/relay/v1/cj1nq71xyfabv0199bp3a7hhf')
 )
@@ -47,27 +35,3 @@ ReactDOM.render(
   />,
   document.getElementById('root')
 )
-
-// ReactDOM.render(
-//   <Router
-//     forceFetch
-//     environment={Relay.Store}
-//     render={applyRouterMiddleware(useRelay)}
-//     history={browserHistory}
-//   >
-//     <Route
-//       path='/' component={TodoApp}
-//       queries={ViewerQueries}>
-//       <IndexRoute
-//         component={TodoList}
-//         queries={ViewerQueries}
-//         prepareParams={() => ({status: 'any'})}
-//       />
-//       <Route
-//         path=':status' component={TodoList}
-//         queries={ViewerQueries}
-//       />
-//     </Route>
-//   </Router>,
-//   document.getElementById('root')
-// )

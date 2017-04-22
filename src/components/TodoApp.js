@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import Relay from 'react-relay'
 import ChangeTodoStatusMutation from '../mutations/ChangeTodoStatusMutation'
 import AddTodoMutation from '../mutations/AddTodoMutation'
-import TodoListFooter from './TodoListFooter'
 import TodoTextInput from './TodoTextInput'
 import TodoList from './TodoList'
 
@@ -10,7 +9,6 @@ class TodoApp extends React.Component {
 
   static propTypes = {
     viewer: PropTypes.object.isRequired,
-    // children: PropTypes.element.isRequired,
   }
 
   _handleTextInputSave = (text) => {
@@ -22,8 +20,6 @@ class TodoApp extends React.Component {
   _handleMarkAll = () => {
     const numRemainingTodos = this.props.viewer.allTodoes.edges.filter((x) => !x.node.complete).length
     const newStatus = numRemainingTodos !== 0
-
-    console.log('newStatus', newStatus)
 
     this.props.viewer.allTodoes.edges
     .map((x) => x.node)
@@ -40,7 +36,6 @@ class TodoApp extends React.Component {
   }
 
   render () {
-    const hasTodos = this.props.viewer.allTodoes.edges.length > 0
     const numRemainingTodos = this.props.viewer.allTodoes.edges.filter((x) => !x.node.complete).length
     return (
       <div>
@@ -67,16 +62,10 @@ class TodoApp extends React.Component {
           <TodoList
             viewer={this.props.viewer}
             params={{
-              status: 'active',
+              status: 'all',
             }}
           />
 
-          {hasTodos &&
-            <TodoListFooter
-              todos={this.props.viewer.todos}
-              viewer={this.props.viewer}
-            />
-          }
         </section>
         <footer className='info'>
           <p>
@@ -111,7 +100,6 @@ export default Relay.createContainer(TodoApp, {
         },
         ${ChangeTodoStatusMutation.getFragment('viewer')},
         ${AddTodoMutation.getFragment('viewer')},
-        ${TodoListFooter.getFragment('viewer')},
         ${TodoList.getFragment('viewer')}
       }
     `,
