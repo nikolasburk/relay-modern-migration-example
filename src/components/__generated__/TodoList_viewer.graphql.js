@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule TodoList_viewer.graphql
- * @generated SignedSource<<f58ffc56242ab8238ee66e6d5449c808>>
+ * @generated SignedSource<<0acdc92cbedb00b560fc89f3d0fbc686>>
  * @flow
  * @nogrep
  */
@@ -44,7 +44,7 @@ const fragment /*: ConcreteFragment*/ = {
       "args": [
         {
           "kind": "Literal",
-          "name": "first",
+          "name": "last",
           "value": 1000,
           "type": "Int"
         }
@@ -95,7 +95,7 @@ const fragment /*: ConcreteFragment*/ = {
           "storageKey": null
         }
       ],
-      "storageKey": "allTodoes{\"first\":1000}"
+      "storageKey": "allTodoes{\"last\":1000}"
     },
     {
       "kind": "FragmentSpread",

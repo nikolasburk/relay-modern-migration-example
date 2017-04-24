@@ -11,6 +11,7 @@ const mutation = graphql`
         complete
       }
       edge {
+        cursor
         node {
           id
           text
@@ -18,8 +19,10 @@ const mutation = graphql`
         }
       }
       viewer {
+        id
         allTodoes(last: 1000) {
           edges {
+            cursor
             node {
               id
               text
@@ -32,7 +35,7 @@ const mutation = graphql`
   }
 `
 
-function getOptimisticResponse (text, viewerId) {
+function getOptimisticResponse(text, viewerId) {
   return {
     edge: {
       node: {

@@ -5,7 +5,7 @@
  *   relay-compiler
  *
  * @providesModule CreateTodoMutation.flow
- * @generated SignedSource<<1889e636a30075812121b67a296d3b16>>
+ * @generated SignedSource<<aba117c3b6b9f79b5f702a72ba5ca4c4>>
  * @flow
  */
 
@@ -35,6 +35,7 @@ export type CreateTodoMutationResponse_edge_node = {
 };
 
 export type CreateTodoMutationResponse_edge = {
+  cursor: string;
   node: CreateTodoMutationResponse_edge_node;
 };
 
@@ -45,6 +46,7 @@ export type CreateTodoMutationResponse_viewer_allTodoes_edges_node = {
 };
 
 export type CreateTodoMutationResponse_viewer_allTodoes_edges = {
+  cursor: string;
   node: CreateTodoMutationResponse_viewer_allTodoes_edges_node;
 };
 
@@ -53,5 +55,6 @@ export type CreateTodoMutationResponse_viewer_allTodoes = {
 };
 
 export type CreateTodoMutationResponse_viewer = {
+  id: string;
   allTodoes: CreateTodoMutationResponse_viewer_allTodoes;
 };

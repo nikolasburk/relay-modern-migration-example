@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server -d --hot --inline --no-info --port 3001",
+    "start": "webpack-dev-server -d --hot --inline --no-info --port 3000",
     "build": "webpack -d --inline --history-api-fallback --config webpack.config.js",
     "relay": "relay-compiler --src ./src --schema ./schema.graphql"
   },

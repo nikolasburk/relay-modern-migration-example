@@ -8,10 +8,12 @@ const mutation = graphql`
       todo {
         id
       }
+      deletedId
       viewer {
         id
         allTodoes(last: 1000) {
           edges {
+            cursor
             node {
               id
             }

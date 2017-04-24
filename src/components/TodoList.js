@@ -47,7 +47,7 @@ class TodoList extends React.Component {
 export default createFragmentContainer(TodoList, {
   viewer: graphql`
     fragment TodoList_viewer on Viewer {
-      allTodoes(first: 1000) {
+      allTodoes(last: 1000) {
         edges {
           node {
             id,

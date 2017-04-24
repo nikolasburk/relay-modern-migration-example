@@ -5,7 +5,7 @@
  *   relay-compiler
  *
  * @providesModule RemoveTodoMutation.flow
- * @generated SignedSource<<6295dd8e163c19bf9546f11db1df796f>>
+ * @generated SignedSource<<ee795bb32251f1577cf291c1c4066c4a>>
  * @flow
  */
 
@@ -17,6 +17,7 @@ export type DeleteTodoInput = {
 
 export type RemoveTodoMutationResponse = {
   todo?: ?RemoveTodoMutationResponse_todo;
+  deletedId?: ?string;
   viewer: RemoveTodoMutationResponse_viewer;
 };
 
@@ -29,6 +30,7 @@ export type RemoveTodoMutationResponse_viewer_allTodoes_edges_node = {
 };
 
 export type RemoveTodoMutationResponse_viewer_allTodoes_edges = {
+  cursor: string;
   node: RemoveTodoMutationResponse_viewer_allTodoes_edges_node;
 };
 

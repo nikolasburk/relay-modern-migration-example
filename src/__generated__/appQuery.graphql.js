@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule appQuery.graphql
- * @generated SignedSource<<d29aa1ebbe61c1931e910349c39e425b>>
- * @relayHash d858a9442a1126b41389efb58096e0e9
+ * @generated SignedSource<<33dec16bcb2e6de23c8c7b8753f43342>>
+ * @relayHash 89dabd3f42229757539faacf0d5a1a1d
  * @flow
  * @nogrep
  */
@@ -28,7 +28,7 @@ query appQuery {
 
 fragment TodoApp_viewer on Viewer {
   id
-  allTodoes(first: 1000) {
+  allTodoes(last: 1000) {
     edges {
       node {
         id
@@ -40,7 +40,7 @@ fragment TodoApp_viewer on Viewer {
 }
 
 fragment TodoList_viewer on Viewer {
-  allTodoes(first: 1000) {
+  allTodoes(last: 1000) {
     edges {
       node {
         id
@@ -124,7 +124,7 @@ const batch /*: ConcreteBatch*/ = {
                 "args": [
                   {
                     "kind": "Literal",
-                    "name": "first",
+                    "name": "last",
                     "value": 1000,
                     "type": "Int"
                   }
@@ -183,7 +183,7 @@ const batch /*: ConcreteBatch*/ = {
                     "storageKey": null
                   }
                 ],
-                "storageKey": "allTodoes{\"first\":1000}"
+                "storageKey": "allTodoes{\"last\":1000}"
               }
             ]
           }
@@ -201,7 +201,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query appQuery {\n  viewer {\n    ...TodoApp_viewer\n    id\n  }\n}\n\nfragment TodoApp_viewer on Viewer {\n  id\n  allTodoes(first: 1000) {\n    edges {\n      node {\n        id\n        complete\n      }\n    }\n  }\n  ...TodoList_viewer\n}\n\nfragment TodoList_viewer on Viewer {\n  allTodoes(first: 1000) {\n    edges {\n      node {\n        id\n        complete\n        ...Todo_todo\n      }\n    }\n  }\n  ...Todo_viewer\n}\n\nfragment Todo_todo on Todo {\n  id\n  complete\n  text\n}\n\nfragment Todo_viewer on Viewer {\n  id\n}\n"
+  "text": "query appQuery {\n  viewer {\n    ...TodoApp_viewer\n    id\n  }\n}\n\nfragment TodoApp_viewer on Viewer {\n  id\n  allTodoes(last: 1000) {\n    edges {\n      node {\n        id\n        complete\n      }\n    }\n  }\n  ...TodoList_viewer\n}\n\nfragment TodoList_viewer on Viewer {\n  allTodoes(last: 1000) {\n    edges {\n      node {\n        id\n        complete\n        ...Todo_todo\n      }\n    }\n  }\n  ...Todo_viewer\n}\n\nfragment Todo_todo on Todo {\n  id\n  complete\n  text\n}\n\nfragment Todo_viewer on Viewer {\n  id\n}\n"
 };
 
 module.exports = batch;

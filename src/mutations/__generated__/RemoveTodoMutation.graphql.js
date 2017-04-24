@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule RemoveTodoMutation.graphql
- * @generated SignedSource<<424b3534cc919f9f97c599a9a6e06412>>
- * @relayHash 9cb921bcdea317a64c480a555a02c1b0
+ * @generated SignedSource<<c7742c63a87b974b2e38ef977989e1de>>
+ * @relayHash a396cd359b2fcc3800fafd401d754565
  * @flow
  * @nogrep
  */
@@ -19,6 +19,7 @@ export type DeleteTodoInput = {
 
 export type RemoveTodoMutationResponse = {
   todo?: ?RemoveTodoMutationResponse_todo;
+  deletedId?: ?string;
   viewer: RemoveTodoMutationResponse_viewer;
 };
 
@@ -31,6 +32,7 @@ export type RemoveTodoMutationResponse_viewer_allTodoes_edges_node = {
 };
 
 export type RemoveTodoMutationResponse_viewer_allTodoes_edges = {
+  cursor: string;
   node: RemoveTodoMutationResponse_viewer_allTodoes_edges_node;
 };
 
@@ -54,10 +56,12 @@ mutation RemoveTodoMutation(
     todo {
       id
     }
+    deletedId
     viewer {
       id
       allTodoes(last: 1000) {
         edges {
+          cursor
           node {
             id
           }
@@ -116,6 +120,13 @@ const batch /*: ConcreteBatch*/ = {
             "storageKey": null
           },
           {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "deletedId",
+            "storageKey": null
+          },
+          {
             "kind": "LinkedField",
             "alias": "viewer",
             "args": null,
@@ -153,6 +164,13 @@ const batch /*: ConcreteBatch*/ = {
                     "name": "edges",
                     "plural": true,
                     "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "cursor",
+                        "storageKey": null
+                      },
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -237,6 +255,13 @@ const batch /*: ConcreteBatch*/ = {
             "storageKey": null
           },
           {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "deletedId",
+            "storageKey": null
+          },
+          {
             "kind": "LinkedField",
             "alias": null,
             "args": null,
@@ -274,6 +299,13 @@ const batch /*: ConcreteBatch*/ = {
                     "name": "edges",
                     "plural": true,
                     "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "cursor",
+                        "storageKey": null
+                      },
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -315,7 +347,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation RemoveTodoMutation(\n  $input: DeleteTodoInput!\n) {\n  deleteTodo(input: $input) {\n    todo {\n      id\n    }\n    viewer {\n      id\n      allTodoes(last: 1000) {\n        edges {\n          node {\n            id\n          }\n        }\n      }\n    }\n  }\n}\n"
+  "text": "mutation RemoveTodoMutation(\n  $input: DeleteTodoInput!\n) {\n  deleteTodo(input: $input) {\n    todo {\n      id\n    }\n    deletedId\n    viewer {\n      id\n      allTodoes(last: 1000) {\n        edges {\n          cursor\n          node {\n            id\n          }\n        }\n      }\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

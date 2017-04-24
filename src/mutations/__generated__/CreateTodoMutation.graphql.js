@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule CreateTodoMutation.graphql
- * @generated SignedSource<<23a5876c6474db360185c1f3332e278a>>
- * @relayHash 944315cd3f9a1103c1daab2cde0fbf50
+ * @generated SignedSource<<6ae309dc895c351ac412e55bf9f01bd9>>
+ * @relayHash ef26ee6d83299b5914b18661fda91634
  * @flow
  * @nogrep
  */
@@ -37,6 +37,7 @@ export type CreateTodoMutationResponse_edge_node = {
 };
 
 export type CreateTodoMutationResponse_edge = {
+  cursor: string;
   node: CreateTodoMutationResponse_edge_node;
 };
 
@@ -47,6 +48,7 @@ export type CreateTodoMutationResponse_viewer_allTodoes_edges_node = {
 };
 
 export type CreateTodoMutationResponse_viewer_allTodoes_edges = {
+  cursor: string;
   node: CreateTodoMutationResponse_viewer_allTodoes_edges_node;
 };
 
@@ -55,6 +57,7 @@ export type CreateTodoMutationResponse_viewer_allTodoes = {
 };
 
 export type CreateTodoMutationResponse_viewer = {
+  id: string;
   allTodoes: CreateTodoMutationResponse_viewer_allTodoes;
 };
 */
@@ -72,6 +75,7 @@ mutation CreateTodoMutation(
       complete
     }
     edge {
+      cursor
       node {
         id
         text
@@ -79,8 +83,10 @@ mutation CreateTodoMutation(
       }
     }
     viewer {
+      id
       allTodoes(last: 1000) {
         edges {
+          cursor
           node {
             id
             text
@@ -88,7 +94,6 @@ mutation CreateTodoMutation(
           }
         }
       }
-      id
     }
   }
 }
@@ -164,6 +169,13 @@ const batch /*: ConcreteBatch*/ = {
             "plural": false,
             "selections": [
               {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "cursor",
+                "storageKey": null
+              },
+              {
                 "kind": "LinkedField",
                 "alias": null,
                 "args": null,
@@ -207,6 +219,13 @@ const batch /*: ConcreteBatch*/ = {
             "plural": false,
             "selections": [
               {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "id",
+                "storageKey": null
+              },
+              {
                 "kind": "LinkedField",
                 "alias": null,
                 "args": [
@@ -229,6 +248,13 @@ const batch /*: ConcreteBatch*/ = {
                     "name": "edges",
                     "plural": true,
                     "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "cursor",
+                        "storageKey": null
+                      },
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -349,6 +375,13 @@ const batch /*: ConcreteBatch*/ = {
             "plural": false,
             "selections": [
               {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "cursor",
+                "storageKey": null
+              },
+              {
                 "kind": "LinkedField",
                 "alias": null,
                 "args": null,
@@ -392,6 +425,13 @@ const batch /*: ConcreteBatch*/ = {
             "plural": false,
             "selections": [
               {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "id",
+                "storageKey": null
+              },
+              {
                 "kind": "LinkedField",
                 "alias": null,
                 "args": [
@@ -414,6 +454,13 @@ const batch /*: ConcreteBatch*/ = {
                     "name": "edges",
                     "plural": true,
                     "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "cursor",
+                        "storageKey": null
+                      },
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -451,13 +498,6 @@ const batch /*: ConcreteBatch*/ = {
                   }
                 ],
                 "storageKey": "allTodoes{\"last\":1000}"
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "id",
-                "storageKey": null
               }
             ],
             "storageKey": null
@@ -476,7 +516,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation CreateTodoMutation(\n  $input: CreateTodoInput!\n) {\n  createTodo(input: $input) {\n    todo {\n      id\n      text\n      complete\n    }\n    edge {\n      node {\n        id\n        text\n        complete\n      }\n    }\n    viewer {\n      allTodoes(last: 1000) {\n        edges {\n          node {\n            id\n            text\n            complete\n          }\n        }\n      }\n      id\n    }\n  }\n}\n"
+  "text": "mutation CreateTodoMutation(\n  $input: CreateTodoInput!\n) {\n  createTodo(input: $input) {\n    todo {\n      id\n      text\n      complete\n    }\n    edge {\n      cursor\n      node {\n        id\n        text\n        complete\n      }\n    }\n    viewer {\n      id\n      allTodoes(last: 1000) {\n        edges {\n          cursor\n          node {\n            id\n            text\n            complete\n          }\n        }\n      }\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

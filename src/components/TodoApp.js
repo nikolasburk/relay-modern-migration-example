@@ -92,7 +92,7 @@ export default createFragmentContainer(TodoApp, {
   viewer: graphql`
     fragment TodoApp_viewer on Viewer {
       id
-      allTodoes(first: 1000) {
+      allTodoes(last: 1000) {
         edges {
           node {
             id,
