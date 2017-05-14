@@ -1,4 +1,4 @@
-# react-relay-todo-example
+# react-relay-todo-quickstart
 
 * [React](https://facebook.github.io/react/): Frontend framework for building user interfaces
 * [Relay](https://facebook.github.io/relay/): Powerful GraphQL client developed by Facebook
@@ -10,13 +10,13 @@
 
 ## Quickstart
 
-For more information on how to get started [refer to the full react-relay-todo tutorial](https://www.graph.cool/docs/quickstart/react-relay-todo-example).
+For more information on how to get started [refer to the full react-relay-todo tutorial](https://www.graph.cool/docs/quickstart/).
 
 ### 1. Clone example repository
 
 ```sh
-git clone https://github.com/graphcool-examples/react-relay-todo-example.git
-cd react-relay-todo-example
+git clone https://github.com/graphcool-examples/react-relay-todo-quickstart.git
+cd react-relay-todo-quickstart
 ```
 
 ### 2. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
@@ -26,7 +26,7 @@ cd react-relay-todo-example
 npm install -g graphcool
 
 # Create a new project based on the Todo schema
-graphcool init --url http://graphqlbin.com/todo.graphql
+graphcool init --schema http://graphqlbin.com/todo.graphql
 ```
 
 This creates a GraphQL API for the following schema:
@@ -59,7 +59,7 @@ Further, open `package.json` and paste the endpoint as the value for the `url` k
 },
 ```
 
-### 4. Install depdendencies & run locally
+### 4. Install dependencies & run locally
 
 ```sh
 yarn install
@@ -69,8 +69,8 @@ yarn start # open http://localhost:3000 in your browser
 ## Next steps
 
 * [Advanced GraphQL features](x)
-* [Authentication & Permissions](x)
-* [Implementing business logic with serverless functions](x)
+* [Authentication & Permissions](https://www.graph.cool/docs/reference/authorization/overview-iegoo0heez/)
+* [Implementing business logic with serverless functions](https://www.graph.cool/docs/reference/functions/overview-boo6uteemo/)
 
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
