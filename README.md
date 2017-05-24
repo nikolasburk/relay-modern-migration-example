@@ -1,13 +1,11 @@
 # Migrating to Relay Modern
 
-* [React](https://facebook.github.io/react/): Frontend framework for building user interfaces
-* [Relay](https://facebook.github.io/relay/): Powerful GraphQL client developed by Facebook
-* [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
-
 This repository contains 2 branches: 
 
 - **master**: Relay Classic
 - **modern**: Relay Modern
+
+You can read the full tutorial [here](https://www.graph.cool/docs/tutorials/migrating-to-relay-modern-eijooto4se/).
 
 ## Example ([Live demo](https://demo-react-relay-todo-example.netlify.com) & [GraphQL Playground](https://api.graph.cool/relay/v1/cj1nq71xyfabv0199bp3a7hhf))
 
