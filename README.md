@@ -5,15 +5,13 @@ This repository contains 2 branches:
 - **classic**: Relay Classic
 - **modern**: Relay Modern
 
-You can read the full tutorial [here](https://www.graph.cool/docs/tutorials/migrating-to-relay-modern-eijooto4se/).
+You can read the full tutorial describing the migration [here](https://www.graph.cool/docs/tutorials/migrating-to-relay-modern-eijooto4se/).
 
 ## Example ([Live demo](https://demo-react-relay-todo-example.netlify.com) & [GraphQL Playground](https://api.graph.cool/relay/v1/cj1nq71xyfabv0199bp3a7hhf))
 
 ![](http://imgur.com/75LEao7.gif)
 
 ## Quickstart
-
-For more information on how to get started [refer to the full react-relay-todo tutorial](https://www.graph.cool/docs/quickstart/).
 
 ### 1. Clone example repository
 
