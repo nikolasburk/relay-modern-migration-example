@@ -2,7 +2,7 @@
 
 This repository contains 2 branches: 
 
-- **master**: Relay Classic
+- **classic**: Relay Classic
 - **modern**: Relay Modern
 
 You can read the full tutorial [here](https://www.graph.cool/docs/tutorials/migrating-to-relay-modern-eijooto4se/).
